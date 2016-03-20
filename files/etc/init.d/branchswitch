@@ -1,0 +1,14 @@
+#!/bin/sh /etc/rc.common
+START=99
+STOP=99
+start() {
+			uci set autoupdater.settings.branch='stable'
+			logger -s "switched branch - deleting script"
+			rm /etc/init.d/branchswitch
+			rm /etc/rc.d/K99branchswitch
+			rm /etc/rc.d/S99branchswitch
+			uci commit
+		}
+stop() {
+	echo "stop"
+	} 
